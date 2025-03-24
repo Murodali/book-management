@@ -131,7 +131,7 @@ const Home = () => {
                   style: { minWidth: 300 },
                 }}
                 sx={{
-                  width: { xs: "100%", sm: "20%", lg: "35%" },
+                  width: { xs: "100%", sm: "80%", lg: "70%", md: "100%" },
                 }}
               />
 
@@ -139,7 +139,7 @@ const Home = () => {
                 fullWidth
                 size="medium"
                 sx={{
-                  width: { xs: "100%", sm: "20%", lg: "20%" },
+                  width: { xs: "100%", sm: "20%", lg: "20%", md: "10%" },
                 }}
               >
                 <InputLabel>Sort By</InputLabel>
