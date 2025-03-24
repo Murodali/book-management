@@ -16,6 +16,12 @@ const Header = () => {
         variant="h4"
         fontWeight="bold"
         onClick={() => window.location.reload()}
+        sx={{
+          "&:hover": {
+            transform: "scale(1.05)",
+            cursor: "pointer",
+          },
+        }}
       >
         Books Management
       </Typography>
