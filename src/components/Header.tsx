@@ -12,7 +12,11 @@ const Header = () => {
         color: "white",
       }}
     >
-      <Typography variant="h4" fontWeight="bold">
+      <Typography
+        variant="h4"
+        fontWeight="bold"
+        onClick={() => window.location.reload()}
+      >
         Books Management
       </Typography>
     </Box>

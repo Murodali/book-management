@@ -9,6 +9,7 @@ import {
   InputLabel,
   FormControl,
   CircularProgress,
+  SelectChangeEvent,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import BookCard from "../components/BookCard";
@@ -22,7 +23,32 @@ const Home = () => {
   const [openAdd, setOpenAdd] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortBy, setSortBy] = useState("");
-  const [selectedBook, setSelectedBook] = useState<Book | null>(null);
+  const [selectedBook, setSelectedBook] = useState<Book>({
+    key: "",
+    title: "",
+    description: "",
+    authors: [{ key: "", name: "" }],
+    availability: {
+      status: "",
+      available_to_browse: false,
+      available_to_borrow: false,
+      available_to_waitlist: false,
+    },
+    cover_edition_key: "",
+    cover_id: Math.floor(Math.random() * 1000),
+    first_publish_year: 0,
+    has_fulltext: false,
+    ia: "",
+    ia_collection: [],
+    lending_edition: "",
+    lending_identifier: "",
+    printdisabled: false,
+    public_scan: false,
+    subject: [],
+    feedback: [],
+    pages: 0,
+    edition_count: 0,
+  });
   const { fetchBooks, books, deleteBook, isLoading } = useBookStore();
   const [openEdit, setOpenEdit] = useState(false);
 
@@ -30,7 +56,7 @@ const Home = () => {
     setSearchTerm(event.target.value);
   };
 
-  const handleSortChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+  const handleSortChange = (event: SelectChangeEvent<string>) => {
     setSortBy(event.target.value as string);
   };
 

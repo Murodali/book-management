@@ -47,8 +47,8 @@ interface BookStore {
   fetchBooks: () => void;
   addBook: (newBook: Book) => void;
   updateBook: (updatedBook: Book) => void;
-  deleteBook: (bookKey: string) => void;
-  addFeedback: (bookKey: string, feedback: Feedback) => void;
+  deleteBook: (bookKey: number) => void;
+  addFeedback: (bookKey: number, feedback: Feedback) => void;
 }
 
 export const useBookStore = create<BookStore>((set) => ({
@@ -98,7 +98,7 @@ export const useBookStore = create<BookStore>((set) => ({
     }));
   },
 
-  addFeedback: (bookKey: string, feedback: Feedback) => {
+  addFeedback: (bookKey: number, feedback: Feedback) => {
     set((state) => ({
       books: state.books.map((book) =>
         book.cover_id === bookKey

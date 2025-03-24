@@ -7,7 +7,6 @@ import {
 } from "@mui/material";
 import Home from "./pages/Home";
 import BookDetails from "./pages/BookDetails";
-import EditBook from "./pages/EditBook";
 import Header from "./components/Header";
 
 const theme = createTheme();

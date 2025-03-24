@@ -7,9 +7,14 @@ import {
   TextField,
   Button,
 } from "@mui/material";
-import { useBookStore } from "../store/bookStore";
+import Book, { useBookStore } from "../store/bookStore";
 
-const AddBookModal = ({ open, handleClose }) => {
+interface IAddBookModalProps {
+  open: boolean;
+  handleClose: () => void;
+}
+
+const AddBookModal = ({ open, handleClose }: IAddBookModalProps) => {
   const { addBook } = useBookStore();
 
   const [book, setBook] = useState<Book>({
@@ -24,7 +29,7 @@ const AddBookModal = ({ open, handleClose }) => {
       available_to_waitlist: false,
     },
     cover_edition_key: "",
-    cover_id: new Date().toISOString(),
+    cover_id: Math.floor(Math.random() * 1000),
     first_publish_year: 0,
     has_fulltext: false,
     ia: "",
@@ -36,9 +41,10 @@ const AddBookModal = ({ open, handleClose }) => {
     subject: [],
     feedback: [],
     pages: 0,
+    edition_count: 0,
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setBook({ ...book, [e.target.name]: e.target.value });
   };
 
