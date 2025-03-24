@@ -43,6 +43,7 @@ export default Book;
 
 interface BookStore {
   books: Book[];
+  isLoading: boolean; // Add the loading state here
   fetchBooks: () => void;
   addBook: (newBook: Book) => void;
   updateBook: (updatedBook: Book) => void;
@@ -52,8 +53,11 @@ interface BookStore {
 
 export const useBookStore = create<BookStore>((set) => ({
   books: [],
+  isLoading: false, // Initial state for loading
 
   fetchBooks: async () => {
+    set({ isLoading: true }); // Set loading state to true before fetch
+
     try {
       const response = await fetch(
         "https://openlibrary.org/subjects/science.json?limit=21"
@@ -65,11 +69,13 @@ export const useBookStore = create<BookStore>((set) => ({
         feedback: [],
       }));
 
-      set({ books: booksWithFeedback });
+      set({ books: booksWithFeedback, isLoading: false }); // Set loading state to false after fetch
     } catch (error) {
       console.error("Failed to fetch books:", error);
+      set({ isLoading: false }); // Set loading state to false in case of error
     }
   },
+
   addBook: (newBook) => {
     set((state) => ({
       books: [{ ...newBook, feedback: [] }, ...state.books],
