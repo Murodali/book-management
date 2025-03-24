@@ -53,10 +53,10 @@ interface BookStore {
 
 export const useBookStore = create<BookStore>((set) => ({
   books: [],
-  isLoading: false, // Initial state for loading
+  isLoading: false,
 
   fetchBooks: async () => {
-    set({ isLoading: true }); // Set loading state to true before fetch
+    set({ isLoading: true });
 
     try {
       const response = await fetch(
@@ -69,7 +69,7 @@ export const useBookStore = create<BookStore>((set) => ({
         feedback: [],
       }));
 
-      set({ books: booksWithFeedback, isLoading: false }); // Set loading state to false after fetch
+      set({ books: booksWithFeedback, isLoading: false });
     } catch (error) {
       console.error("Failed to fetch books:", error);
       set({ isLoading: false }); // Set loading state to false in case of error
