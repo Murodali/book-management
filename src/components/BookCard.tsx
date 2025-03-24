@@ -22,10 +22,12 @@ const BookCard = ({ book, onEdit, onDetails, onDelete }: IBookCardProps) => {
       }}
     >
       <CardContent>
-        <img
-          src={`https://covers.openlibrary.org/b/id/${book.cover_id}-L.jpg`}
-          alt={book.title}
-        />
+        <Box display={"flex"} justifyContent={"center"}>
+          <img
+            src={`https://covers.openlibrary.org/b/id/${book.cover_id}-L.jpg`}
+            alt={book.title}
+          />
+        </Box>
         <Typography variant="h5">{book.title}</Typography>
         <Typography>{book.authors.map((itm) => itm.name)}</Typography>
         <Box display={"flex"} gap={2}>
